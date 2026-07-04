@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+import mongoose from "mongoose";
 import { config } from "./config.js";
 import { authRoutes } from "./routes/authRoutes.js";
 import { jobRoutes } from "./routes/jobRoutes.js";
@@ -19,9 +20,30 @@ app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
 if (config.nodeEnv !== "test") app.use(morgan("dev"));
 
-app.get("/api/health", (_req, res) => {
-  res.json({ success: true, message: "Internshell API is healthy", data: { time: new Date().toISOString() } });
+app.use(async (req, res, next) => {
+    if (mongoose.connection.readyState === 1) {
+          return next();
+    }
+    try {
+          await mongoose.connect(config.mongoUri, {
+                  serverSelectionTimeoutMS: 5000
+          });
+          console.log("MongoDB Connected successfully");
+          next();
+    } catch (error) {
+          console.error("MongoDB Connection Error:", error);
+          res.status(500).json({ success: false, message: "Database connection failed" });
+    }
 });
+
+app.get("/api/health", (_req, res) => {
+    res.json({
+          success: true,
+          message: "Internshell API is healthy",
+          data: { time: new Date().toISOString() },
+    });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/applications", applicationRoutes);
@@ -32,9 +54,9 @@ app.use("/api", systemRoutes);
 
 app.use((_req, res) => res.status(404).json({ success: false, message: "Route not found" }));
 app.use((error, _req, res, _next) => {
-  console.error(error);
-  res.status(500).json({
-    success: false,
-    message: config.nodeEnv === "production" ? "Something went wrong" : error.message
-  });
+    console.error(error);
+    res.status(500).json({
+          success: false,
+          message: config.nodeEnv === "production" ? "Something went wrong" : error.message,
+    });
 });
