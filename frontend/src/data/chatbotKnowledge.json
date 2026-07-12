@@ -1,0 +1,141 @@
+[
+  {
+    "id": "service-web-development",
+    "category": "services",
+    "questions": [
+      "Do you provide web development?",
+      "Can you build a website?",
+      "What web development services do you offer?",
+      "I need a website",
+      "Can your company develop my website?",
+      "create a website"
+    ],
+    "keywords": [
+      "website",
+      "web development",
+      "develop website",
+      "build website",
+      "web design"
+    ],
+    "answer": "Yes. We provide professional web development services. We can help you build modern, responsive, and scalable websites.",
+    "relatedQuestions": [
+      "What other services do you offer?",
+      "How do I request a service?"
+    ]
+  },
+  {
+    "id": "service-hr",
+    "category": "services",
+    "questions": [
+      "Do you offer HR services?",
+      "Can you help me hire?",
+      "I need recruitment services",
+      "What are your HR services?",
+      "Do you provide talent acquisition?"
+    ],
+    "keywords": [
+      "hr",
+      "human resources",
+      "hire",
+      "hiring",
+      "recruitment",
+      "talent"
+    ],
+    "answer": "Yes, we offer comprehensive HR and Recruitment services, helping you find top talent quickly and efficiently.",
+    "relatedQuestions": [
+      "How do I request a service?"
+    ]
+  },
+  {
+    "id": "request-service",
+    "category": "support",
+    "questions": [
+      "How do I request a service?",
+      "How can I order something?",
+      "Where can I buy your services?",
+      "I want to request a new service",
+      "How do I place an order?"
+    ],
+    "keywords": [
+      "request",
+      "order",
+      "buy",
+      "new service"
+    ],
+    "answer": "You can request a new service directly from your Client Dashboard. Just click on 'Request Service' for the specific department (HR, Development, etc.).",
+    "action": {
+      "type": "navigate",
+      "path": "/client/services",
+      "label": "Go to Services"
+    },
+    "relatedQuestions": [
+      "What services do you offer?"
+    ]
+  },
+  {
+    "id": "company-info",
+    "category": "general",
+    "questions": [
+      "What is Internshell?",
+      "What does your company do?",
+      "Tell me about your business",
+      "Who are you?"
+    ],
+    "keywords": [
+      "company",
+      "internshell",
+      "business",
+      "who are you"
+    ],
+    "answer": "Internshell is a premium agency providing a full suite of services including HR Recruitment, Development, Finance, Automation, and Marketing.",
+    "relatedQuestions": [
+      "What services do you offer?",
+      "How do I request a service?"
+    ]
+  },
+  {
+    "id": "contact-support",
+    "category": "support",
+    "questions": [
+      "How do I contact support?",
+      "I need help",
+      "Where is customer service?",
+      "Can I talk to a human?",
+      "How to reach you?"
+    ],
+    "keywords": [
+      "support",
+      "contact",
+      "help",
+      "human",
+      "customer service"
+    ],
+    "answer": "You can reach our support team by using the 'Help' section in your dashboard or by emailing our support desk.",
+    "relatedQuestions": [
+      "What is Internshell?"
+    ]
+  },
+  {
+    "id": "pricing",
+    "category": "pricing",
+    "questions": [
+      "How much does it cost?",
+      "What is your pricing?",
+      "Are your services expensive?",
+      "Do you have a price list?",
+      "pricing details"
+    ],
+    "keywords": [
+      "price",
+      "cost",
+      "pricing",
+      "expensive",
+      "cheap",
+      "fee"
+    ],
+    "answer": "Our pricing depends on the specific requirements of your project. We offer customized quotes to ensure you get the best value. Please request a service to get a detailed estimate.",
+    "relatedQuestions": [
+      "How do I request a service?"
+    ]
+  }
+]
