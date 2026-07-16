@@ -9,6 +9,7 @@ for (const line of envLines) {
     if (key && value) {
       console.log(`Adding ${key}...`);
       try {
+        try { execSync(`npx vercel env rm ${key} --yes`, { stdio: 'ignore' }); } catch(e) {}
         execSync(`npx vercel env add ${key} production`, { input: value, stdio: ['pipe', 'pipe', 'pipe'] });
         console.log(`Added ${key}`);
       } catch (err) {

@@ -1,6 +1,6 @@
 import {
   Bell, BookOpenCheck, Bot, BriefcaseBusiness, ChevronDown, CreditCard, FileSearch,
-  LayoutDashboard, LogOut, Menu, MessageSquareText, Plus, Search, Settings, UserRound, Users, X
+  LayoutDashboard, LogOut, Menu, MessageSquareText, Plus, Search, Settings, UserRound, Users, X, Cpu
 } from "lucide-react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -26,6 +26,7 @@ const employerLinks = [
   ["/employer/jobs", "My jobs", BriefcaseBusiness],
   ["/employer/post-job", "Post a job", Plus],
   ["/applications", "Candidates", Users],
+  ["/client/services", "Command Center", Cpu],
   ["/messages", "Messages", MessageSquareText],
   ["/profile", "Company profile", Settings]
 ];

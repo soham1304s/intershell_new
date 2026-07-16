@@ -31,6 +31,7 @@ export const auth = (required = true) => async (req, res, next) => {
 };
 
 export const roles = (...allowed) => (req, res, next) => {
+  console.log("ROLES MIDDLEWARE: req.user.role =", req.user?.role, "allowed =", allowed);
   if (!req.user || !allowed.includes(req.user.role)) {
     return fail(res, "You do not have permission for this action", 403);
   }

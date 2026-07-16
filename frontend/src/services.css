@@ -1,0 +1,416 @@
+/* Client Services Premium UI */
+
+/* Services Hero Section */
+.services-hero {
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #f7f6ff, #ffffff);
+  border-radius: 24px;
+  margin-bottom: 40px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.services-hero::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--violet-soft) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: breathe 6s infinite ease-in-out;
+}
+
+.services-hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+  margin-bottom: 15px;
+  color: var(--ink);
+}
+
+.services-hero p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Service Cards Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.service-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(38, 38, 71, 0.1);
+  border-color: var(--card-color, var(--violet));
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--card-color, var(--violet));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover::after {
+  transform: scaleX(1);
+}
+
+.service-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  background: var(--card-bg, var(--violet-soft));
+  color: var(--card-color, var(--violet));
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.service-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+
+.service-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.service-card .request-btn {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--card-color, var(--violet));
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  opacity: 0.8;
+  transition: opacity 0.2s, gap 0.2s;
+}
+
+.service-card:hover .request-btn {
+  opacity: 1;
+  gap: 12px;
+}
+
+/* Service Modals - Two Pane Glassmorphism */
+.service-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 25, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  animation: modalFadeIn 0.3s ease;
+}
+
+.service-modal-container {
+  width: 100%;
+  max-width: 900px;
+  height: 600px;
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 24px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f0f0f4;
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s;
+  color: var(--ink);
+}
+
+.service-modal-close:hover {
+  background: #e4e4eb;
+}
+
+.service-modal-left {
+  flex: 0 0 40%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-modal-left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--modal-gradient, linear-gradient(135deg, var(--violet), #3a328f));
+  opacity: 0.95;
+  z-index: 0;
+}
+
+.service-modal-left::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  top: -100px;
+  right: -100px;
+  filter: blur(40px);
+  z-index: 1;
+}
+
+.service-modal-left-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-modal-left h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.service-modal-left p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.service-features {
+  margin-top: 40px;
+  list-style: none;
+  padding: 0;
+}
+
+.service-features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.service-features li svg {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.service-modal-right {
+  flex: 1;
+  padding: 40px 50px;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.service-modal-right h3 {
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  color: var(--ink);
+}
+
+.service-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.service-form label {
+  font-size: 0.85rem;
+  color: #4a4e69;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-form input,
+.service-form select,
+.service-form textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fafafc;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.service-form input:focus,
+.service-form select:focus,
+.service-form textarea:focus {
+  background: #fff;
+  border-color: var(--modal-color, var(--violet));
+  box-shadow: 0 0 0 4px var(--modal-soft-color, var(--violet-soft));
+}
+
+.service-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.service-submit {
+  margin-top: 10px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  background: var(--modal-color, var(--violet));
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.service-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Specific Service Themes */
+.theme-hr {
+  --card-color: #3b82f6;
+  --card-bg: #eff6ff;
+  --modal-color: #2563eb;
+  --modal-soft-color: #dbeafe;
+  --modal-gradient: linear-gradient(135deg, #3b82f6, #1e3a8a);
+}
+
+.theme-dev {
+  --card-color: #8b5cf6;
+  --card-bg: #f5f3ff;
+  --modal-color: #7c3aed;
+  --modal-soft-color: #ede9fe;
+  --modal-gradient: linear-gradient(135deg, #8b5cf6, #4c1d95);
+}
+
+.theme-finance {
+  --card-color: #10b981;
+  --card-bg: #ecfdf5;
+  --modal-color: #059669;
+  --modal-soft-color: #d1fae5;
+  --modal-gradient: linear-gradient(135deg, #10b981, #064e3b);
+}
+
+.theme-auto {
+  --card-color: #f59e0b;
+  --card-bg: #fffbeb;
+  --modal-color: #d97706;
+  --modal-soft-color: #fef3c7;
+  --modal-gradient: linear-gradient(135deg, #f59e0b, #78350f);
+}
+
+.theme-marketing {
+  --card-color: #ec4899;
+  --card-bg: #fdf2f8;
+  --modal-color: #db2777;
+  --modal-soft-color: #fce7f3;
+  --modal-gradient: linear-gradient(135deg, #ec4899, #831843);
+}
+
+@media (max-width: 900px) {
+  .service-modal-container {
+    flex-direction: column;
+    height: 90vh;
+  }
+  
+  .service-modal-left {
+    flex: 0 0 auto;
+    padding: 30px;
+  }
+  
+  .service-modal-right {
+    padding: 30px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

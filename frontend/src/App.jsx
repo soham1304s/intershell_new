@@ -20,7 +20,7 @@ import EmployerJobs from "./pages/EmployerJobs.jsx";
 import PostJob from "./pages/PostJob.jsx";
 import Admin from "./pages/Admin.jsx";
 import NotFound from "./pages/NotFound.jsx";
-
+import ClientServices from "./pages/ClientServices.jsx";
 export default function App() {
   return (
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
@@ -41,6 +41,7 @@ export default function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/notifications" element={<Notifications />} />
+        <Route path="/client/services" element={<ClientServices />} />
         <Route path="/employer/jobs" element={<ProtectedRoute roles={["employer", "admin"]}><EmployerJobs /></ProtectedRoute>} />
         <Route path="/employer/post-job" element={<ProtectedRoute roles={["employer", "admin"]}><PostJob /></ProtectedRoute>} />
         <Route path="/admin" element={<ProtectedRoute roles={["admin"]}><Admin section="overview" /></ProtectedRoute>} />
